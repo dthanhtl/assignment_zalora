@@ -1,7 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="b3J-lL-Vbl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Tweeter Home View Controller-->
+        <scene sceneID="IZA-Yf-Mg8">
+            <objects>
+                <viewController id="b3J-lL-Vbl" customClass="TweeterHomeViewController" customModule="ZaloraAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PtZ-Am-A5j"/>
+                        <viewControllerLayoutGuide type="bottom" id="9HL-e0-aRx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kci-5e-Amc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="How is your life going?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zw-6m-tK6">
+                                <rect key="frame" x="16" y="36" width="291" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bBp-YI-4au"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s4-FS-jsQ">
+                                <rect key="frame" x="323" y="36" width="36" height="40"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendTapped:" destination="b3J-lL-Vbl" eventType="touchUpInside" id="OCV-3t-EdQ"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOJ-UW-lsy">
+                                <rect key="frame" x="0.0" y="92" width="375" height="575"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="cMp-Xb-5nV" customClass="TweeterHomeTableViewCell" customModule="ZaloraAssignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMp-Xb-5nV" id="tNl-mV-RKj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rOJ-UW-lsy" firstAttribute="leading" secondItem="Kci-5e-Amc" secondAttribute="leading" id="0ih-NF-fgo"/>
+                            <constraint firstItem="9HL-e0-aRx" firstAttribute="top" secondItem="rOJ-UW-lsy" secondAttribute="bottom" id="1r3-M2-X9E"/>
+                            <constraint firstItem="5zw-6m-tK6" firstAttribute="top" secondItem="PtZ-Am-A5j" secondAttribute="bottom" constant="16" id="6JB-Nj-CIQ"/>
+                            <constraint firstAttribute="trailing" secondItem="9s4-FS-jsQ" secondAttribute="trailing" constant="16" id="8Uh-7m-0id"/>
+                            <constraint firstItem="9s4-FS-jsQ" firstAttribute="height" secondItem="5zw-6m-tK6" secondAttribute="height" id="Fu3-PF-RFT"/>
+                            <constraint firstItem="9s4-FS-jsQ" firstAttribute="top" secondItem="PtZ-Am-A5j" secondAttribute="bottom" constant="16" id="Ik3-DU-Qj5"/>
+                            <constraint firstItem="5zw-6m-tK6" firstAttribute="leading" secondItem="Kci-5e-Amc" secondAttribute="leading" constant="16" id="VEJ-hh-Ri5"/>
+                            <constraint firstItem="rOJ-UW-lsy" firstAttribute="top" secondItem="5zw-6m-tK6" secondAttribute="bottom" constant="16" id="e21-Uy-ZMd"/>
+                            <constraint firstAttribute="trailing" secondItem="rOJ-UW-lsy" secondAttribute="trailing" id="eGx-Qr-v77"/>
+                            <constraint firstItem="9s4-FS-jsQ" firstAttribute="leading" secondItem="5zw-6m-tK6" secondAttribute="trailing" constant="16" id="em3-Xw-Uhc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="rOJ-UW-lsy" id="MjX-yX-Vfm"/>
+                        <outlet property="tfInputPost" destination="5zw-6m-tK6" id="P1v-up-hOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02e-Q8-ATV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="81"/>
+        </scene>
+    </scenes>
 </document>

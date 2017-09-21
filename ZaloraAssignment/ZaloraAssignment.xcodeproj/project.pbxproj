@@ -17,10 +17,14 @@
 		AAEEDEB21F73968C00176274 /* TweeterHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */; };
 		AAEEDEB41F7396A400176274 /* TweeterBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */; };
 		AAEEDEB51F7396A400176274 /* TweeterBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */; };
-		AAEEDEB71F7396BD00176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */; };
-		AAEEDEB81F7396BD00176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */; };
 		AAEEDEBA1F7396DA00176274 /* TweeterPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */; };
 		AAEEDEBB1F7396DA00176274 /* TweeterPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */; };
+		AAEEDEBF1F739CB800176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEBE1F739CB800176274 /* TweeterHomeViewController.swift */; };
+		AAEEDEC01F739CB800176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEBE1F739CB800176274 /* TweeterHomeViewController.swift */; };
+		AAEEDEC31F739CD700176274 /* TweeterHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEC11F739CD700176274 /* TweeterHomeTableViewCell.swift */; };
+		AAEEDEC41F739CD700176274 /* TweeterHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEC11F739CD700176274 /* TweeterHomeTableViewCell.swift */; };
+		AAEEDEC51F739CD700176274 /* TweeterHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDEC21F739CD700176274 /* TweeterHomeTableViewCell.xib */; };
+		AAEEDEC61F739CD700176274 /* TweeterHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDEC21F739CD700176274 /* TweeterHomeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +53,10 @@
 		AAEEDEA31F73689C00176274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TweeterHome.storyboard; path = Storyboards/TweeterHome.storyboard; sourceTree = "<group>"; };
 		AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterBusiness.swift; path = Business/TweeterBusiness.swift; sourceTree = "<group>"; };
-		AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterHomeViewController.swift; path = Controllers/TweeterHomeViewController.swift; sourceTree = "<group>"; };
 		AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterPosts.swift; path = Models/TweeterPosts.swift; sourceTree = "<group>"; };
+		AAEEDEBE1F739CB800176274 /* TweeterHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterHomeViewController.swift; path = Controllers/Home/TweeterHomeViewController.swift; sourceTree = "<group>"; };
+		AAEEDEC11F739CD700176274 /* TweeterHomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterHomeTableViewCell.swift; path = Controllers/Home/TweeterHomeTableViewCell.swift; sourceTree = "<group>"; };
+		AAEEDEC21F739CD700176274 /* TweeterHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TweeterHomeTableViewCell.xib; path = Controllers/Home/TweeterHomeTableViewCell.xib; sourceTree = "<group>"; };
 		DD7C6D29FC9AB710BAFA6B1A /* Pods_ZaloraAssignmentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZaloraAssignmentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,7 +146,7 @@
 		AAEEDEAD1F73718600176274 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */,
+				AAEEDEBD1F739C6800176274 /* Home */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -159,6 +165,24 @@
 				AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AAEEDEBC1F73972200176274 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAEEDEC11F739CD700176274 /* TweeterHomeTableViewCell.swift */,
+				AAEEDEC21F739CD700176274 /* TweeterHomeTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		AAEEDEBD1F739C6800176274 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AAEEDEBC1F73972200176274 /* Cells */,
+				AAEEDEBE1F739CB800176274 /* TweeterHomeViewController.swift */,
+			);
+			name = Home;
 			sourceTree = "<group>";
 		};
 		F1670D130D7AA93FBE68254E /* Frameworks */ = {
@@ -262,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEEDE971F73689B00176274 /* LaunchScreen.storyboard in Resources */,
+				AAEEDEC51F739CD700176274 /* TweeterHomeTableViewCell.xib in Resources */,
 				AAEEDE941F73689B00176274 /* Assets.xcassets in Resources */,
 				AAEEDEB11F73968C00176274 /* TweeterHome.storyboard in Resources */,
 			);
@@ -272,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEEDEB21F73968C00176274 /* TweeterHome.storyboard in Resources */,
+				AAEEDEC61F739CD700176274 /* TweeterHomeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,8 +402,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEEDE8D1F73689B00176274 /* AppDelegate.swift in Sources */,
-				AAEEDEB71F7396BD00176274 /* TweeterHomeViewController.swift in Sources */,
 				AAEEDEBA1F7396DA00176274 /* TweeterPosts.swift in Sources */,
+				AAEEDEC31F739CD700176274 /* TweeterHomeTableViewCell.swift in Sources */,
+				AAEEDEBF1F739CB800176274 /* TweeterHomeViewController.swift in Sources */,
 				AAEEDEB41F7396A400176274 /* TweeterBusiness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,8 +415,9 @@
 			files = (
 				AAEEDEB51F7396A400176274 /* TweeterBusiness.swift in Sources */,
 				AAEEDEA21F73689C00176274 /* ZaloraAssignmentTests.swift in Sources */,
+				AAEEDEC41F739CD700176274 /* TweeterHomeTableViewCell.swift in Sources */,
+				AAEEDEC01F739CB800176274 /* TweeterHomeViewController.swift in Sources */,
 				AAEEDEBB1F7396DA00176274 /* TweeterPosts.swift in Sources */,
-				AAEEDEB81F7396BD00176274 /* TweeterHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
