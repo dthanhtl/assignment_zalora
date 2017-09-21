@@ -15,6 +15,7 @@ class TweeterHomeViewController: UIViewController {
   
   @IBOutlet weak var tfInputPost: UITextField!
   
+  @IBOutlet weak var lblCharCount: UILabel!
   @IBOutlet weak var tableView: UITableView! {
     didSet {
       tableView.delegate = self
@@ -37,6 +38,8 @@ class TweeterHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
       
       self.tableView.isHidden = true
+      self.lblCharCount.text = "0/50"
+      self.tfInputPost.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
       
       self.userID = (Auth.auth().currentUser?.uid)!
       self.ref = Database.database().reference(withPath: "\(self.userID)_posts")
@@ -91,7 +94,6 @@ class TweeterHomeViewController: UIViewController {
                                       self.tfInputPost.becomeFirstResponder()
                                       
       }
-      
 
       alert.addAction(cancelAction)
       
@@ -117,10 +119,11 @@ class TweeterHomeViewController: UIViewController {
     // 4
     postItemRef.setValue(postItem.toAnyObject())
     
-    self.tfInputPost.text = ""
+    self.tfInputPost.text = "" // clear textfield
+    self.lblCharCount.text = "0/50"
+    self.lblCharCount.isHidden = true
+    self.tfInputPost.resignFirstResponder()
   }
-  
-  
 
 }
 
@@ -165,5 +168,33 @@ extension TweeterHomeViewController: UITableViewDelegate, UITableViewDataSource 
     return cell
   }
   
+}
+
+extension TweeterHomeViewController: UITextFieldDelegate {
+
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    self.lblCharCount.isHidden = false
+    
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    self.lblCharCount.isHidden = true
+  }
+  
+  func textFieldDidChange(_ textField: UITextField) {
+    self.lblCharCount.isHidden = false
+    var textToDisplay = ""
+    if (textField.text!.characters.count <= 50) {
+      textToDisplay = "\(String(describing: textField.text!.characters.count))/50"
+    }else {
+      
+      let splitCount: Int = textField.text!.characters.count / 50 + 1
+
+      textToDisplay = "(\(splitCount))\(String(describing: textField.text!.characters.count-50*(splitCount-1)))/50"
+    }
+    self.lblCharCount.text = textToDisplay
+  }
   
 }
+
