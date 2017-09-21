@@ -1,0 +1,6 @@
+framework module Pods_ZaloraAssignment {
+  umbrella header "Pods-ZaloraAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
