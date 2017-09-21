@@ -10,11 +10,17 @@
 		07F4621E459F181349E1AAEF /* Pods_ZaloraAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89842A802993F2AF9177F4F4 /* Pods_ZaloraAssignment.framework */; };
 		788EF6837DEC41AB8B4A6E2C /* Pods_ZaloraAssignmentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7C6D29FC9AB710BAFA6B1A /* Pods_ZaloraAssignmentTests.framework */; };
 		AAEEDE8D1F73689B00176274 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDE8C1F73689B00176274 /* AppDelegate.swift */; };
-		AAEEDE8F1F73689B00176274 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDE8E1F73689B00176274 /* ViewController.swift */; };
-		AAEEDE921F73689B00176274 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDE901F73689B00176274 /* Main.storyboard */; };
 		AAEEDE941F73689B00176274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDE931F73689B00176274 /* Assets.xcassets */; };
 		AAEEDE971F73689B00176274 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDE951F73689B00176274 /* LaunchScreen.storyboard */; };
 		AAEEDEA21F73689C00176274 /* ZaloraAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEA11F73689C00176274 /* ZaloraAssignmentTests.swift */; };
+		AAEEDEB11F73968C00176274 /* TweeterHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */; };
+		AAEEDEB21F73968C00176274 /* TweeterHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */; };
+		AAEEDEB41F7396A400176274 /* TweeterBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */; };
+		AAEEDEB51F7396A400176274 /* TweeterBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */; };
+		AAEEDEB71F7396BD00176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */; };
+		AAEEDEB81F7396BD00176274 /* TweeterHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */; };
+		AAEEDEBA1F7396DA00176274 /* TweeterPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */; };
+		AAEEDEBB1F7396DA00176274 /* TweeterPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +41,16 @@
 		89842A802993F2AF9177F4F4 /* Pods_ZaloraAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZaloraAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEEDE891F73689B00176274 /* ZaloraAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZaloraAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEEDE8C1F73689B00176274 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AAEEDE8E1F73689B00176274 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AAEEDE911F73689B00176274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAEEDE931F73689B00176274 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAEEDE961F73689B00176274 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAEEDE981F73689B00176274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEEDE9D1F73689C00176274 /* ZaloraAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZaloraAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEEDEA11F73689C00176274 /* ZaloraAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZaloraAssignmentTests.swift; sourceTree = "<group>"; };
 		AAEEDEA31F73689C00176274 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TweeterHome.storyboard; path = Storyboards/TweeterHome.storyboard; sourceTree = "<group>"; };
+		AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterBusiness.swift; path = Business/TweeterBusiness.swift; sourceTree = "<group>"; };
+		AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterHomeViewController.swift; path = Controllers/TweeterHomeViewController.swift; sourceTree = "<group>"; };
+		AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweeterPosts.swift; path = Models/TweeterPosts.swift; sourceTree = "<group>"; };
 		DD7C6D29FC9AB710BAFA6B1A /* Pods_ZaloraAssignmentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZaloraAssignmentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,8 +113,6 @@
 				AAEEDEAD1F73718600176274 /* Controllers */,
 				AAEEDEAC1F73717800176274 /* Models */,
 				AAEEDE8C1F73689B00176274 /* AppDelegate.swift */,
-				AAEEDE8E1F73689B00176274 /* ViewController.swift */,
-				AAEEDE901F73689B00176274 /* Main.storyboard */,
 				AAEEDE931F73689B00176274 /* Assets.xcassets */,
 				AAEEDE951F73689B00176274 /* LaunchScreen.storyboard */,
 				AAEEDE981F73689B00176274 /* Info.plist */,
@@ -126,6 +132,7 @@
 		AAEEDEAC1F73717800176274 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAEEDEB91F7396DA00176274 /* TweeterPosts.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -133,6 +140,7 @@
 		AAEEDEAD1F73718600176274 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAEEDEB61F7396BD00176274 /* TweeterHomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 		AAEEDEAE1F73729700176274 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				AAEEDEB31F7396A400176274 /* TweeterBusiness.swift */,
 			);
 			name = Business;
 			sourceTree = "<group>";
@@ -147,6 +156,7 @@
 		AAEEDEAF1F7372B100176274 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AAEEDEB01F73968C00176274 /* TweeterHome.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -253,7 +263,7 @@
 			files = (
 				AAEEDE971F73689B00176274 /* LaunchScreen.storyboard in Resources */,
 				AAEEDE941F73689B00176274 /* Assets.xcassets in Resources */,
-				AAEEDE921F73689B00176274 /* Main.storyboard in Resources */,
+				AAEEDEB11F73968C00176274 /* TweeterHome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEEDEB21F73968C00176274 /* TweeterHome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,8 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEEDE8F1F73689B00176274 /* ViewController.swift in Sources */,
 				AAEEDE8D1F73689B00176274 /* AppDelegate.swift in Sources */,
+				AAEEDEB71F7396BD00176274 /* TweeterHomeViewController.swift in Sources */,
+				AAEEDEBA1F7396DA00176274 /* TweeterPosts.swift in Sources */,
+				AAEEDEB41F7396A400176274 /* TweeterBusiness.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +386,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEEDEB51F7396A400176274 /* TweeterBusiness.swift in Sources */,
 				AAEEDEA21F73689C00176274 /* ZaloraAssignmentTests.swift in Sources */,
+				AAEEDEBB1F7396DA00176274 /* TweeterPosts.swift in Sources */,
+				AAEEDEB81F7396BD00176274 /* TweeterHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,14 +404,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AAEEDE901F73689B00176274 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAEEDE911F73689B00176274 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AAEEDE951F73689B00176274 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -579,6 +587,7 @@
 				AAEEDEA81F73689C00176274 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAEEDEA91F73689C00176274 /* Build configuration list for PBXNativeTarget "ZaloraAssignmentTests" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +596,7 @@
 				AAEEDEAB1F73689C00176274 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
