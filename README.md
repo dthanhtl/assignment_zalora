@@ -1,1 +1,1 @@
-# assignment_zalora
+# Thanh Tran
