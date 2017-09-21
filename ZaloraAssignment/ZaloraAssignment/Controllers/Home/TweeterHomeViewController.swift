@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+
 
 class TweeterHomeViewController: UIViewController {
   
@@ -17,21 +20,48 @@ class TweeterHomeViewController: UIViewController {
       tableView.delegate = self
       tableView.dataSource = self
       tableView.register(UINib(nibName: "TweeterHomeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "cellHome")
+      tableView.register(UINib(nibName: "TweeterEmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "cellEmpty")
       
     }
   }
 
+  var posts: [TweeterPost] = []
+  var ref : DatabaseReference!
+  var userID = ""
+  var count = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+      
+      self.tableView.isHidden = true
+      
+      self.userID = (Auth.auth().currentUser?.uid)!
+      self.ref = Database.database().reference(withPath: "\(self.userID)_posts")
+      
+      ref.queryOrdered(byChild: "addedDate").observe(.value, with: { snapshot in
+        var newPosts: [TweeterPost] = []
+        self.count = 0
+        for item in snapshot.children {
+          let postItem = TweeterPost(snapshot: item as! DataSnapshot)
+          newPosts.append(postItem)
+          self.count += 1
+        }
+        self.posts = newPosts
+        self.posts.reverse()
+        self.tableView.isHidden = false
+        
+        self.tableView.reloadData()
+        
+      })
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
 
     /*
     // MARK: - Navigation
@@ -47,6 +77,23 @@ class TweeterHomeViewController: UIViewController {
   
   
   @IBAction func sendTapped(_ sender: Any) {
+    
+    let addedTime = Date().timeIntervalSince1970
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "hh:mm:ss dd-MM-yyyy"
+    
+    let dateString = dateFormatter.string(from: Date())
+    
+    let postItem = TweeterPost(postContent: self.tfInputPost.text!, addedByUser: self.userID, addedDate: Int(addedTime), addedDateString: dateString, key: "")
+    // 3
+    self.count += 1
+    let keyString = "tweetPost000\(self.count)"
+    
+    let postItemRef = self.ref.child(keyString)
+    
+    // 4
+    postItemRef.setValue(postItem.toAnyObject())
   }
   
   
@@ -60,7 +107,10 @@ extension TweeterHomeViewController: UITableViewDelegate, UITableViewDataSource 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    if(self.posts.count == 0) {
+      return 1
+    }
+    return self.posts.count
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,8 +118,19 @@ extension TweeterHomeViewController: UITableViewDelegate, UITableViewDataSource 
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    if (self.posts.count == 0) {
+      let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellEmpty", for: indexPath) as! TweeterEmptyTableViewCell
+      
+      
+      return cell
+    }
     let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as! TweeterHomeTableViewCell
-    cell.lblPostContent.text = "my life is suck as fuck "
+    
+    let post : TweeterPost = self.posts[indexPath.row]
+    
+    cell.lblPostContent.text = post.postContent
+    cell.lblDate.text = post.addedDateString
 
     return cell
   }
