@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     Auth.auth().signInAnonymously() { (user, error) in
+      print(user)
       
     }
     return true

@@ -41,24 +41,32 @@ class TweeterHomeViewController: UIViewController {
       self.lblCharCount.text = "0/50"
       self.tfInputPost.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
       
-      self.userID = (Auth.auth().currentUser?.uid)!
-      self.ref = Database.database().reference(withPath: "\(self.userID)_posts")
+      if Auth.auth().currentUser == nil  {
+        
+      }else{
+        self.userID = (Auth.auth().currentUser?.uid)!
+        self.ref = Database.database().reference(withPath: "\(self.userID)_posts")
+        ref.queryOrdered(byChild: "addedDate").observe(.value, with: { snapshot in
+          var newPosts: [TweeterPost] = []
+          self.count = 0
+          for item in snapshot.children {
+            let postItem = TweeterPost(snapshot: item as! DataSnapshot)
+            newPosts.append(postItem)
+            self.count += 1
+          }
+          self.posts = newPosts
+          self.posts.reverse() // reverse to get the latest post to top
+          self.tableView.isHidden = false
+          
+          self.tableView.reloadData()
+          
+        })
+      }
       
-      ref.queryOrdered(byChild: "addedDate").observe(.value, with: { snapshot in
-        var newPosts: [TweeterPost] = []
-        self.count = 0
-        for item in snapshot.children {
-          let postItem = TweeterPost(snapshot: item as! DataSnapshot)
-          newPosts.append(postItem)
-          self.count += 1
-        }
-        self.posts = newPosts
-        self.posts.reverse() // reverse to get the latest post to top
-        self.tableView.isHidden = false
-        
-        self.tableView.reloadData()
-        
-      })
+      
+      
+      
+      
       
     }
 
