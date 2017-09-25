@@ -11,3 +11,5 @@ If user writes more than 50chars, the post will be splited into posts :D
 Cheers,
 
 Thanh
+
+![image](https://{https://drive.google.com/file/d/0B-iZMOke8nRLOXFTYl9sUVp1bWc/view})
