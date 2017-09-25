@@ -102,29 +102,66 @@ class TweeterHomeViewController: UIViewController {
       return
     }
     
-    let addedTime = Date().timeIntervalSince1970
+    let userPost = self.tfInputPost.text!
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "hh:mm:ss dd-MM-yyyy"
+    var splitedPost = userPost.split()
+    splitedPost.reverse()
     
-    let dateString = dateFormatter.string(from: Date())
+    for i in (0..<splitedPost.count) {
     
-    let postItem = TweeterPost(postContent: self.tfInputPost.text!, addedByUser: self.userID, addedDate: Int(addedTime), addedDateString: dateString, key: "")
-    // 3
-    self.count += 1
-    let keyString = "tweetPost000\(self.count)"
+      var post: String! = splitedPost[i]
+      if post.characters.count > 50 {
+        let alert = UIAlertController(title: "Tweeter",
+                                      message: "Hey yo, please add some 'spaces' dude :)",
+                                      preferredStyle: .alert)
+        
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+        return
+      }
+      
+      
+      let addedTime = Date().timeIntervalSince1970
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "hh:mm:ss dd-MM-yyyy"
+      
+      let dateString = dateFormatter.string(from: Date())
+      
+      var content = ""
+      if (splitedPost.count) > 1 {
+        content = "\(splitedPost.count - i)/\(splitedPost.count) \(post!)"
+      }else{
+        content = post!
+      }
+      
+      let postItem = TweeterPost(postContent: content, addedByUser: self.userID, addedDate: Int(addedTime), addedDateString: dateString, key: "")
+      
+      self.count += 1
+      let keyString = "tweetPost000\(self.count)"
+      
+      let postItemRef = self.ref.child(keyString)
+      
+      
+      postItemRef.setValue(postItem.toAnyObject())
+    }
     
-    let postItemRef = self.ref.child(keyString)
-    
-    // 4
-    postItemRef.setValue(postItem.toAnyObject())
-    
+
     self.tfInputPost.text = "" // clear textfield
     self.lblCharCount.text = "0/50"
     self.lblCharCount.isHidden = true
     self.tfInputPost.resignFirstResponder()
   }
 
+}
+
+func checkPost(post: String){
+  
+  
 }
 
 // MARK: - functions
@@ -193,7 +230,10 @@ extension TweeterHomeViewController: UITextFieldDelegate {
 
       textToDisplay = "(\(splitCount))\(String(describing: textField.text!.characters.count-50*(splitCount-1)))/50"
     }
+    
+    
     self.lblCharCount.text = textToDisplay
+    
   }
   
 }

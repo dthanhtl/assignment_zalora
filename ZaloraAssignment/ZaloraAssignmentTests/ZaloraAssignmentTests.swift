@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Firebase
+
 @testable import ZaloraAssignment
 
 class ZaloraAssignmentTests: XCTestCase {
@@ -24,7 +26,38 @@ class ZaloraAssignmentTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+      let testString = "Hi, how is your life ?"
+      XCTAssertNotNil(testString.split())
+      
     }
+  func testSplitFunctionOnePost(){
+  
+    let testString = "I love building internet product!"
+    XCTAssertNotNil(testString.split())
+    XCTAssertEqual(testString.split().count, 1, "User wrote more than 50 chars")
+  }
+  
+  func testSplitFunctionMultiPost(){
+    
+    let testString = "I love building internet product! Creating a new tech-unicorn is awesome"
+    XCTAssertNotNil(testString.split())
+    
+    XCTAssertGreaterThan(testString.split().count, 1, "User wrote less than 50 chars")
+  }
+  
+  func testCharCountIfOnlyOnePost() {
+    let testString = "I love building internet product! "
+    XCTAssertNotNil(testString.split())
+    
+    XCTAssertEqual(testString.split().count, 1, "User wrote more than 50 chars")
+  }
+  
+  func testCharCountIfMultiPost() {
+    let testString = "I love building internet product! Creating a new tech-unicorn is awesome"
+    XCTAssertNotNil(testString.split())
+    
+    XCTAssertGreaterThan(testString.split().count, 1, "User wrote less than 50 chars")
+  }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
