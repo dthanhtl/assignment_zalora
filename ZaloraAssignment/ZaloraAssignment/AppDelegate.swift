@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 
 @UIApplicationMain
@@ -21,16 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     
     
-    Auth.auth().signInAnonymously() { (user, error) in
-      print(user)
-      
-    }
+    
     return true
   }
   
   override init() {
     // Firebase Init
     FirebaseApp.configure()
+    Database.database().isPersistenceEnabled = true
   }
 
   func applicationWillResignActive(_ application: UIApplication) {

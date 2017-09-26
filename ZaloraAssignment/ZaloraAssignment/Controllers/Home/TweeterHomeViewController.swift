@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 
 class TweeterHomeViewController: UIViewController {
@@ -25,28 +26,31 @@ class TweeterHomeViewController: UIViewController {
       
     }
   }
-
+  
   var posts: [TweeterPost] = []
   var ref : DatabaseReference!
   var userID = ""
   var count = 0
   
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-      
-      self.tableView.isHidden = true
-      self.lblCharCount.text = "0/50"
-      self.tfInputPost.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-      
-      if Auth.auth().currentUser == nil  {
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
+    
+    SVProgressHUD.show()
+    self.tableView.isHidden = true
+    
+    
+    Auth.auth().addStateDidChangeListener() { auth, user in
+      if user != nil {
         
-      }else{
+        self.lblCharCount.text = "0/50"
+        self.tfInputPost.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+
         self.userID = (Auth.auth().currentUser?.uid)!
         self.ref = Database.database().reference(withPath: "\(self.userID)_posts")
-        ref.queryOrdered(byChild: "addedDate").observe(.value, with: { snapshot in
+        self.ref.queryOrdered(byChild: "addedDate").observe(.value, with: { snapshot in
           var newPosts: [TweeterPost] = []
           self.count = 0
           for item in snapshot.children {
@@ -56,35 +60,37 @@ class TweeterHomeViewController: UIViewController {
           }
           self.posts = newPosts
           self.posts.reverse() // reverse to get the latest post to top
+
+          SVProgressHUD.dismiss()
           self.tableView.isHidden = false
-          
           self.tableView.reloadData()
-          
+
         })
+        
+      }else{
+        Auth.auth().signInAnonymously() { (user, error) in
+          
+        }
       }
-      
-      
-      
-      
-      
-      
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+  }
   
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destinationViewController.
+   // Pass the selected object to the new view controller.
+   }
+   */
   
   // MARK: - buttons
   
@@ -98,11 +104,11 @@ class TweeterHomeViewController: UIViewController {
       
       
       let cancelAction = UIAlertAction(title: "Cancel",
-                                     style: .default) { _ in
-                                      self.tfInputPost.becomeFirstResponder()
-                                      
+                                       style: .default) { _ in
+                                        self.tfInputPost.becomeFirstResponder()
+                                        
       }
-
+      
       alert.addAction(cancelAction)
       
       present(alert, animated: true, completion: nil)
@@ -110,13 +116,14 @@ class TweeterHomeViewController: UIViewController {
       return
     }
     
+    //check, split if needed then send
     let userPost = self.tfInputPost.text!
     
     var splitedPost = userPost.split()
     splitedPost.reverse()
     
     for i in (0..<splitedPost.count) {
-    
+      
       var post: String! = splitedPost[i]
       if post.characters.count > 50 {
         let alert = UIAlertController(title: "Tweeter",
@@ -131,7 +138,6 @@ class TweeterHomeViewController: UIViewController {
         
         return
       }
-      
       
       let addedTime = Date().timeIntervalSince1970
       
@@ -158,23 +164,14 @@ class TweeterHomeViewController: UIViewController {
       postItemRef.setValue(postItem.toAnyObject())
     }
     
-
+    //reset stuffs
     self.tfInputPost.text = "" // clear textfield
     self.lblCharCount.text = "0/50"
     self.lblCharCount.isHidden = true
     self.tfInputPost.resignFirstResponder()
   }
-
-}
-
-func checkPost(post: String){
-  
   
 }
-
-// MARK: - functions
-
-
 
 // MARK: - table
 
@@ -209,20 +206,23 @@ extension TweeterHomeViewController: UITableViewDelegate, UITableViewDataSource 
     
     cell.lblPostContent.text = post.postContent
     cell.lblDate.text = post.addedDateString
-
+    
     return cell
+  }
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.tfInputPost.resignFirstResponder()
   }
   
 }
 
 extension TweeterHomeViewController: UITextFieldDelegate {
-
-
+  
+  
   func textFieldDidBeginEditing(_ textField: UITextField) {
     self.lblCharCount.isHidden = false
     
   }
-
+  
   func textFieldDidEndEditing(_ textField: UITextField) {
     self.lblCharCount.isHidden = true
   }
@@ -235,7 +235,7 @@ extension TweeterHomeViewController: UITextFieldDelegate {
     }else {
       
       let splitCount: Int = textField.text!.characters.count / 50 + 1
-
+      
       textToDisplay = "(\(splitCount))\(String(describing: textField.text!.characters.count-50*(splitCount-1)))/50"
     }
     

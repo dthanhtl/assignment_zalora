@@ -9,6 +9,7 @@ target 'ZaloraAssignment' do
 pod 'Firebase'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'SVProgressHUD'
   target 'ZaloraAssignmentTests' do
     inherit! :search_paths
     # Pods for testing
